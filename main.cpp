@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    MyWidget widget;
+    Widget widget;
     widget.setWindowTitle("Vending Machine");
     widget.show();
     return app.exec();

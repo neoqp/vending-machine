@@ -2,32 +2,34 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QVBoxLayout>
-#include <QGridLayout>
-#include <QLCDNumber>
-#include <QPushButton>
-#include <QMessageBox>
+#include "ui_widget.h"
 
-class MyWidget : public QWidget {
+class Widget : public QWidget
+{
     Q_OBJECT
 
 public:
-    MyWidget(QWidget *parent = nullptr);
+    explicit Widget(QWidget *parent = nullptr);
+    ~Widget();
 
 private slots:
-    void addMoney(int amount);
-    void buyDrink(int index);
-    void updateButtons();
-    void updateDisplay();
-    void showChange();
+    void add10();
+    void add50();
+    void add100();
+    void add500();
+    void buyCoffee();
+    void buyTea();
+    void buyMilk();
+    void reset();
+    void updateDrinkButtons();
 
 private:
-    QLCDNumber *lcdNumber;
-    QPushButton *drinkButtons[3];
-    QPushButton *resetButton;
-    int money = 0;
-    QVector<int> amounts = {10, 50, 100, 500};
-    QVector<int> drinkPrices = {100, 150, 200};
+    Ui::Widget *ui;
+    int money;
+
+    void updateDisplay();
+    void addMoney(int amount);
+    void buyDrink(int cost);
 };
 
 #endif // WIDGET_H
